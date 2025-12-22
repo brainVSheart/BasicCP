@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 int main(){
     int dayCode, hour;
     printf("Input day (1-7): ");
@@ -34,3 +33,4 @@ int main(){
     }
     return 0;
 }
+
