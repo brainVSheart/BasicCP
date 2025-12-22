@@ -3,7 +3,6 @@ int main(){
     int number;
     int evenSum = 0;
     int oddSum = 0;
-
     printf("Input Number :");
     if (scanf("%d", &number) != 1){
         return 1;
@@ -22,4 +21,5 @@ int main(){
     printf("Even Sum: %d\n", evenSum);
     printf("Odd Sum: %d\n", oddSum);
     return 0;
+
 }
