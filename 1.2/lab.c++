@@ -11,23 +11,24 @@ while (1){
 if(score>100){
     printf("เก่งเกินเบอร์แต่เธอได้แค่ A");
     }else if(score>=A){
-        printf("A\n");
+        printf("Grade A\n");
     }else if(score>=BP && score!=A){
-        printf("B+\n");
+        printf("Grade B+\n");
     }else if(score>=B && score!=BP){
-        printf("B\n");
+        printf("Grade B\n");
     }else if(score>=CP && score!=B){
-        printf("C+\n");
+        printf("Grade C+\n");
     }else if(score>=C && score!=CP){
-        printf("C\n");
+        printf("Grade C\n");
     }else if(score>=DP && score!=C){
-        printf("D+\n");
+        printf("Grade D+\n");
     }else if(score>=D && score!=DP){
-        printf("D\n");
-    }else{
-        printf("F\n");
+        printf("Grade D\n");
+    }else if(score<=F && score>=0){
+        printf("Grade F\n");
     }
-    if(score==0){
+    if(score<0){
+        printf("Exit\n");
       break;
     }
 }
