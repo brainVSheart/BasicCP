@@ -1,36 +1,35 @@
 #include <stdio.h>
 int main(){
-    float principal, payment, interest;//ยอดเงินต้น ยอดชำระ ดอกเบี้ยรวมยอดต้น
-    int count = 0;
-    const float Interest_rate = 0.01;
-    const float Penalty = 10.0;
+    float principal, payment, interest;
+    const float interest_rate = 0.01f;
+    const float penalty = 10.0f;
+    int month = 0;
+    const int MAX_MONTH = 10;
     printf("Enter the principal amount: ");
-    if(scanf("%f", &principal) != 1){
-        printf("Invalid input for principal amount.\n");
+    if(scanf("%f", &principal) != 1 || principal <= 0){
+        printf("Invalid principal amount.\n");
         return 1;
     }
     printf("Enter the payment: ");
-    if(scanf("%f", &payment) != 1){
-        printf("Invalid input for principal amount.\n");
+    if(scanf("%f", &payment) != 1 || payment <= 0){
+        printf("Invalid payment amount.\n");
         return 1;
     }
-    while (principal > 0){
-        interest = principal * Interest_rate;
+    while(principal > 0 && month < MAX_MONTH){
+        interest = principal * interest_rate;
+        if(payment < interest) {
+            principal += penalty;
+        }
         principal += interest;
         principal -= payment;
-        printf("Mount %d:Remaining %.2f\n", count+1, principal);
-        count++;
-        if(payment < interest){
-            principal += Penalty;
-        }
-        if(count > 10){
-            break;
-        }
+        month++;
+        if(principal < 0)
+            principal = 0;
+        printf("Month %d: Remaining %.2f\n", month, principal);
     }
-    if(count <= 10 ){
-        printf("Loan settled in %d  mounts", count);
-    }else{
-        printf("Loan settled in 10+ mounts");
-    }
+    if(principal == 0)
+        printf("Loan settled in %d months\n", month);
+    else
+        printf("Loan settled in 10+ months\n");
     return 0;
 }
